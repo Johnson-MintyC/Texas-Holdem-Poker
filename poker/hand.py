@@ -3,6 +3,16 @@ class Hand():
         self.cards = cards
 
     def best_rank(self):
+
+        ranks_with_three_of_a_kind = {
+            rank: rank_count
+            for rank, rank_count in self._card_rank_counts.items()
+            if rank_count == 3
+        }
+
+        if len(ranks_with_three_of_a_kind) == 1:
+            return "Three of a kind"
+
         ranks_with_pairs = {
             rank: rank_count
             for rank, rank_count in self._card_rank_counts.items()
