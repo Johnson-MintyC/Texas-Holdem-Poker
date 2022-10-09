@@ -21,6 +21,9 @@ class Hand():
                 return name
 
     def _straight(self):
+        if len(self.cards) < 5:
+            return False
+            
         rank_indexes = [card.rank_index for card in self.cards]
         starting_rank_index = rank_indexes[0]
         last_rank_index = rank_indexes[-1]
