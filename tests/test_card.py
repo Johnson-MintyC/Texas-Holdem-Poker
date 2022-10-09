@@ -16,6 +16,11 @@ class CardTest(unittest.TestCase):
         card = Card(rank="2", suit = "Clubs")
         self.assertEqual(card.suit, "Clubs")
 
+    def test_knows_its_rank_index(self):
+        card = Card(rank = "Jack", suit = "Hearts")
+        self.assertEqual(card.rank_index, 9)
+
+
     def test_has_string_rep_with_rank_and_suit(self):
         card = Card("5", "Diamonds")
         self.assertEqual(str(card), "5 of Diamonds")
@@ -74,28 +79,30 @@ class CardTest(unittest.TestCase):
          "The sort algo is not sorting the lower card first"
          )
 
-    # def tests_sorts_cards(self):
-    #     two_of_spades = Card(rank = '2', suit = 'Spades')
-    #     five_of_diamonds = Card(rank = '5', suit = 'Diamonds')
-    #     five_of_hearts = Card(rank = '5', suit = 'Hearts')
-    #     eight_of_hearts = Card(rank = '8', suit = 'Hearts')
-    #     ace_of_clubs = Card(rank = 'Ace', suit = 'Clubs')
+    def tests_sorts_cards(self):
+        two_of_spades = Card(rank = '2', suit = 'Spades')
+        five_of_diamonds = Card(rank = '5', suit = 'Diamonds')
+        five_of_hearts = Card(rank = '5', suit = 'Hearts')
+        eight_of_hearts = Card(rank = '8', suit = 'Hearts')
+        ace_of_clubs = Card(rank = 'Ace', suit = 'Clubs')
 
-    #     unsorted_cards = [
-    #         five_of_diamonds,
-    #         two_of_spades,
-    #         five_of_hearts,
-    #         ace_of_clubs,
-    #         eight_of_hearts
-    #     ]
+        unsorted_cards = [
+            five_of_diamonds,
+            two_of_spades,
+            five_of_hearts,
+            ace_of_clubs,
+            eight_of_hearts
+        ]
 
-    #     self.assertEqual(
-    #         Card.sort(unsorted_cards), 
-    #         [
-    #             two_of_spades,
-    #             five_of_diamonds,
-    #             five_of_hearts,
-    #             eight_of_hearts,
-    #             ace_of_clubs
-    #         ]
-    #     )
+        unsorted_cards.sort()
+
+        self.assertEqual(
+            unsorted_cards, 
+            [
+                two_of_spades,
+                five_of_diamonds,
+                five_of_hearts,
+                eight_of_hearts,
+                ace_of_clubs
+            ]
+        )

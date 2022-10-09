@@ -4,16 +4,21 @@ from poker.hand import Hand
 
 class HandTest(unittest.TestCase):
     def test_receives_and_stores_cards(self):
+        ace_of_spades = Card(rank = "Ace", suit = "Spades")
+        six_of_clubs = Card(rank = "6", suit = "Clubs")
         cards = [
-            Card(rank = "Ace", suit = "Spades"),
-            Card(rank = "6", suit = "Clubs")
+            ace_of_spades,
+            six_of_clubs
         ]
 
         hand = Hand(cards = cards)
 
         self.assertEqual(
             hand.cards,
-            cards
+            [
+            six_of_clubs,
+            ace_of_spades,
+            ]
         )
 
     def test_figures_out_card_is_best_rank(self):
