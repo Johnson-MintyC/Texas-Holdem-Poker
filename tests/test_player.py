@@ -1,12 +1,14 @@
 import unittest
+from unittest import mock
 from unittest.mock import MagicMock
 
+from poker.card import Card
 from poker.hand import Hand
 from poker.player import Player
 
 class PlayerTest(unittest.TestCase):
     def test_stores_name_hand(self):
-        hand = Hand(cards = [])
+        hand = Hand()
         player = Player(name = "Timmy", hand = hand)
         self.assertEqual(player.name, "Timmy")
         self.assertEqual(player.hand, hand)
@@ -22,3 +24,16 @@ class PlayerTest(unittest.TestCase):
             "Straight Flush"
             )
         mock_hand.best_rank.assert_called()
+
+    def test_passes_new_cards_to_hand(self):
+        mock_hand = MagicMock()
+        player = Player(name = 'Kim', hand = mock_hand)
+
+        cards = [
+            Card(rank = "Ace", suit = "Spades"),
+            Card(rank = "Queen", suit = "Diamonds")
+        ]
+
+        player.add_cards(cards)
+
+        mock_hand.add_cards.assert_called_once_with(cards)
