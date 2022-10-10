@@ -16,3 +16,4 @@ class PlayerTest(unittest.TestCase):
         player = Player(name = "Jimmy", hand = mock_hand)
 
         player.best_hand()
+        mock_hand.best_rank.assert_called()
