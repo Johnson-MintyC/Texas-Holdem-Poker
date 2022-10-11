@@ -2,6 +2,10 @@ class Hand():
     def __init__(self):
         self.cards = []
 
+    def __repr__(self):
+        card_as_string = [str(card) for card in self.cards]
+        return ", ".join(card_as_string)
+
     def add_cards(self, cards):
         copy = self.cards[:]
         copy.extend(cards)
