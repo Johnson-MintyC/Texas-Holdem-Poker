@@ -50,7 +50,7 @@ class HandTest(unittest.TestCase):
             "No Cards"
         )
 
-    def test_figures_out_card_is_best_rank(self):
+    def test_figures_out_high_card_is_best_rank(self):
         cards = [
             Card(rank = "Ace", suit = "Diamonds"),
             Card(rank = "7", suit = "Clubs")
