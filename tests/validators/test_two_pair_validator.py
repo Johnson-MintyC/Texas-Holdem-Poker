@@ -1,5 +1,4 @@
 import unittest
-from wsgiref.validate import validator
 
 from poker.card import Card
 from poker.validators import TwoPairValidator
