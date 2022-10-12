@@ -23,6 +23,19 @@ class StraightValidatorTest(unittest.TestCase):
             self.ten,
             self.jack
         ]
+    
+    def test_does_not_deem_two_consecutive_cards_as_straight(self):
+        cards = [
+            Card(rank = "6", suit = "Hearts"),
+            Card(rank = "7", suit = "Diamonds")
+        ]
+
+        validator = StraightValidator(cards = cards)
+
+        self.assertEqual(
+            validator.is_valid(),
+            False
+        )
 
     def test_figures_out__out_five_cards_in_a_row(self):
         validator = StraightValidator(cards = self.cards)
