@@ -1,0 +1,19 @@
+from string import capwords
+
+
+from poker.validators import ThreeOfAKindValidator, PairValidator
+
+class FullHouseValidator():
+    def __init__(self, cards):
+        self.cards = cards
+        self.name = "Full House"
+
+    def is_valid(self):
+        return ThreeOfAKindValidator(cards = self.cards).is_valid() and PairValidator(cards = self.cards).is_valid()
+
+    def valid_cards(self):
+        three_of_a_kind_cards = ThreeOfAKindValidator(cards=self.cards).valid_cards()
+        pair_cards = PairValidator(cards=self.cards).valid_cards()
+        cards_in_hand = three_of_a_kind_cards + pair_cards
+        cards_in_hand.sort()
+        return cards_in_hand
